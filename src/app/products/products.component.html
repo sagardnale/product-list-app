@@ -1,12 +1,23 @@
+    <div style="display: flex; justify-content: center;">
+        <input type="text" placeholder="Search by name"
+         [(ngModel)]="searchText" />
+    <button (click)="toggleSort()">
+    Sort by Price ({{ sortAsc ? 'Asc' : 'Desc' }})
+  </button>
+    </div>
+    
 <div style="text-align: center; margin:auto; display: flex; justify-content: center;">
- <table border="1" cellPadding="8">
+
+
+
+    <table border="1" cellPadding="20">
     <tr>
         <th>Id</th>
         <th>Name</th>
         <th>Price</th>
     </tr>
     <tbody>
-        <tr *ngFor="let product of products" [style.color]="product.price > 1100 ? 'red':'black'">
+        <tr *ngFor="let product of filteredProducts" [style.color]="product.price > 1100 ? 'red':'black'">
             <td>{{product.id}}</td>
             <td>{{product.name}}</td>
             <td>{{product.price}}</td>

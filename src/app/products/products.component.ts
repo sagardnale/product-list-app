@@ -12,6 +12,9 @@ interface Product{
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
+
+  searchText="";
+  sortAsc = true;
   products: Product[] = [
     {id:1 , name:"Dell Laptop", price:900},
     {id:2 , name:"Sony Camera", price:1500},
@@ -25,6 +28,16 @@ export class ProductsComponent {
     {id:10 , name:"Bajaj Cooler", price:1050},
     {id:11 , name:"LG TV", price:2050},
     {id:12 , name:"Sony Laptop", price:950},
-  ]
+  ];
+
+  get filteredProducts() {
+    return this.products
+      .filter(p => p.name.toLowerCase().includes(this.searchText.toLowerCase()))
+      .sort((a, b) => this.sortAsc ? a.price - b.price : b.price - a.price);
+  }
+
+    toggleSort() {
+    this.sortAsc = !this.sortAsc;
+  }
 
 }
