@@ -1,12 +1,12 @@
-<div style="text-align: center; margin:auto;">
- <table border="1">
+<div style="text-align: center; margin:auto; display: flex; justify-content: center;">
+ <table border="1" cellPadding="8">
     <tr>
         <th>Id</th>
         <th>Name</th>
         <th>Price</th>
     </tr>
     <tbody>
-        <tr *ngFor="let product of products">
+        <tr *ngFor="let product of products" [style.color]="product.price > 1100 ? 'red':'black'">
             <td>{{product.id}}</td>
             <td>{{product.name}}</td>
             <td>{{product.price}}</td>
